@@ -15,8 +15,10 @@ const PageRoute = () => {
         <Route path="/" element={<Home />}/>
        
      
-        <Route path="/about" element={<About />}/>
-        <Route path="login" element={<LoginPage />} />
+        <Route path="/about" element={<About />}>
+          <Route path="login" element={<LoginPage />} />
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
      
         <Route path="/register" element={<RegisterPage />} />
         <Route to="/dashboard" element={<DashBoard/>} />
