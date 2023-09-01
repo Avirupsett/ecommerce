@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PageRoute from './routes/PageRoute';
+import PageNavbar from "./components/PageNavbar";
+import UserAxios from "./Axios/UserAxios";
+import DashMain from './pages/Dashboard/Main';
+// import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { getToken } = UserAxios();
+ 
+  if (!getToken()) {
+    return (
+      <>
+        <PageNavbar />
+        <PageRoute/>
+      </>
+    );
+  }
+
+  return(
+    <>
+      <DashMain/>
+     
+    </>
+  )
+
 }
 
 export default App;
